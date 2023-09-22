@@ -1,101 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link, useParams } from 'react-router-dom';
-import './Home.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Home() {
-  const [users, setUsers] = useState([]);
-  const { cid } = useParams();
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(5); 
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
-
-  const loadUsers = async () => {
-    const result = await axios.get('http://localhost:8080/');
-    const res=await axios.get("http://localhost:8080/sort");
-    setUsers(result.data);
-    setUsers(res.data);
-  };
-
-  const deleteUser = async (cid) => {
-    await axios.delete(`http://localhost:8080/del/${cid}`);
-    loadUsers();
-  };
-
-  // Calculate the start and end indices for the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = users.slice(indexOfFirstItem, indexOfLastItem);
-
+const HomePage = () => {
   return (
     <div className="container">
-      <div className="py-4"
-       >
-        
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <h1>Welcome to LP solutions</h1>
+          
+      <p style={{fontSize:"20px"}}>
+        We're glad to have you here! We're dedicated to providing you with the best experience possible. Whether you're a first-time visitor or a long-time customer, we're committed to serving your needs and making your time with us enjoyable.
+      </p>
 
-        <table className="table border caption-top">
-          <caption style={{ color: 'white', fontWeight: 'bold', textAlign: 'center', fontSize: '30px' }}>
-            List of Customers
-          </caption>
-          <thead className="table-dark" style={{ fontSize: '18px' }}>
-            <tr>
-              <th scope="col">Customer ID</th>
-              <th scope="col">Customer Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone No</th>
-              <th scope="col">Address</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((user, index) => (
-              <tr key={index}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.phno}</td>
-                <td>{user.address}</td>
-                <td>
-                  <Link className="btn btn-primary mx-4" to={`/viewuser/${user.id}`}>
-                    View
-                  </Link>
-                  <Link className="btn btn-outline-secondary mx-4 green button" to={`/edituser/${user.id}`}>
-                    Edit
-                  </Link>
-                  <button className="btn btn-danger mx-4" onClick={() => deleteUser(user.id)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot className="table" style={{ textAlign: 'center' }}>
-            <tr>
-              <td colSpan="6" style={{ fontSize: '20px', fontWeight: 'bold', fontStyle: 'italic' }}>
-                Thank you for viewing the customer list
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+      <h2>
+        <Link to={"/pro"} style={{color:'black'}}>Discover Our Products and Services</Link></h2>
+      <p>
+        Explore our wide range of products and services designed to cater to your needs. From high-quality products to exceptional services, we've got you covered. Feel free to browse our website and discover what we have in store for you.
+      </p>
 
-        {/* Pagination controls */}
-        <div className="pagination">
-          <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <button onClick={() => setCurrentPage(currentPage + 1)} disabled={indexOfLastItem >= users.length}>
-            Next
-          </button>
-        </div>
+      
 
-        {/* Display current page number */}
-        <div className="page-number">
-          Page {currentPage} of {Math.ceil(users.length / itemsPerPage)}
+      <h2>Stay Connected</h2>
+      <p>
+        Join our community and stay connected with us. 
+        <Link to={"/adduser"}>Sign up </Link>for our newsletter to receive updates, special offers, and exclusive content. Follow us on social media to be a part of our growing online family.
+      </p>
+
+      <h2>Contact Us</h2>
+      <p>
+        If you have any inquiries or need assistance, we're just a click away. Feel free to
+        <Link to={"/con"}>contact</Link>  us via email, phone, or through our online contact form. We're here to help and look forward to hearing from you.
+      </p>
+
+     
+          <div className="text-center">
+            <Link to="/add" className="btn btn-primary">
+              View Customers
+            </Link>
+            
+           
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

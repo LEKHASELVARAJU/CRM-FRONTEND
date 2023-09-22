@@ -4,4 +4,7 @@ table{
     background-color: #601a1a45 ;
     /* Add more table styles as needed */
   }
+  body{
+    background-image: url("https://cdn.pixabay.com/photo/2015/08/01/18/48/flowers-870557_1280.jpg");
+  }
   

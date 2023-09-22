@@ -21,7 +21,7 @@ export default function AddUser() {
       const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post("http://localhost:8080/", user);
-        navigate("/");
+        navigate("/add");
       };
   return (
     // <div className="container" 
@@ -39,7 +39,7 @@ export default function AddUser() {
           <div style={{padding:'5px'}}>
           </div>
             <div className="col-md-5 offset-md-3 border rounded p-2 mt-7 shadow"
-            style={{backgroundImage:`url("https://cdn.pixabay.com/photo/2016/03/04/16/03/snowflakes-1236247_1280.jpg")`,
+            style={{backgroundImage:`url("https://cdn.pixabay.com/photo/2015/08/01/18/48/flowers-870557_1280.jpg")`,
             minHeight:'83vh',
         
           
@@ -115,6 +115,7 @@ export default function AddUser() {
            </div>
            <div style={{paddingTop:'8px'}}></div>
            <button type="submit" className="btn btn-outline-primary" >Submit</button>
+           {/* <Link className="btn btn-outline-primary mx-2" to="/add">Submit</Link> */}
            {/* <button type="submit" className="btn btn-outline-danger mx-3">Cancel</button> */}
            <Link className="btn btn-outline-danger mx-2" to="/">
               Cancel
