@@ -23,7 +23,7 @@ const HomePage = () => {
       <h2>Stay Connected</h2>
       <p>
         Join our community and stay connected with us. 
-        <Link to={"/adduser"}>Sign up </Link>for our newsletter to receive updates, special offers, and exclusive content. Follow us on social media to be a part of our growing online family.
+        <Link to={"/adduser"}>Customer Sign Up </Link>for our newsletter to receive updates, special offers, and exclusive content. Follow us on social media to be a part of our growing online family.
       </p>
 
       <h2>Contact Us</h2>
@@ -34,9 +34,7 @@ const HomePage = () => {
 
      
           <div className="text-center">
-            <Link to="/add" className="btn btn-primary">
-              View Customers
-            </Link>
+            
             
            
           </div>

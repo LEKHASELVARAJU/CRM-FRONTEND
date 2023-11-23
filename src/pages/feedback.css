@@ -40,4 +40,29 @@
   .form-container input[type="submit"]:hover {
     background-color: #0056b3;
   }
+  .feedback-message {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed to position the message */
+    right: 20px; /* Adjust as needed to position the message */
+    background-color: #a17d85;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  /* Add animation for the message if desired */
+  .feedback-message.show-message {
+    animation: fade-out 5s;
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
   

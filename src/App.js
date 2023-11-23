@@ -8,6 +8,7 @@ import ViewUser from './users/ViewUser';
 import Add from './pages/Add';
 import Feedback from './pages/feedback';
 import Product from './pages/product';
+import User from './pages/user';
 // import Contact from './pages/Contact';
 import Contact from './pages/Contact';
 // import Page from './users/Page1';
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/con" element={<Contact />} />
         <Route exact path="/feed" element={<Feedback />} />
         <Route exact path="/pro" element={<Product />} />
+        <Route exact path="/user" element={<User />} />
         </Routes>
       </Router>
     </div>
